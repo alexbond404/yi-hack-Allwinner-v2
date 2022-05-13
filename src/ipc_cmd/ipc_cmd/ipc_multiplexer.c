@@ -85,10 +85,10 @@ int parse_message(char *msg, ssize_t len)
     {
         strcpy(fwd_msg, "AI_HUMAN_DETECTION_START");
     }
-    else if((len >= sizeof(IPC_AI_HUMAN_DETECTION_STOP) - 1) && (memcmp(msg, IPC_AI_HUMAN_DETECTION_STOP, sizeof(IPC_AI_HUMAN_DETECTION_STOP) - 1)==0))
+/*    else if((len >= sizeof(IPC_AI_HUMAN_DETECTION_STOP) - 1) && (memcmp(msg, IPC_AI_HUMAN_DETECTION_STOP, sizeof(IPC_AI_HUMAN_DETECTION_STOP) - 1)==0))
     {
         strcpy(fwd_msg, "AI_HUMAN_DETECTION_STOP");
-    }
+    }*/
     else if((len >= sizeof(IPC_BABY_CRYING) - 1) && (memcmp(msg, IPC_BABY_CRYING, sizeof(IPC_BABY_CRYING) - 1)==0))
     {
         strcpy(fwd_msg, "BABY_CRYING");
@@ -96,6 +96,10 @@ int parse_message(char *msg, ssize_t len)
     else if((len >= sizeof(IPC_SOUND_DETECTION) - 1) && (memcmp(msg, IPC_SOUND_DETECTION, sizeof(IPC_SOUND_DETECTION) - 1)==0))
     {
         strcpy(fwd_msg, "SOUND_DETECTION");
+    }
+    else if((len >= sizeof(IPC_RECORD_READY) - 1) && (memcmp(msg, IPC_RECORD_READY, sizeof(IPC_RECORD_READY) - 1)==0))
+    {
+        strcpy(fwd_msg, "RECORD_READY");
     }
 
     if (fwd_msg[0] == '\0') return 0;
